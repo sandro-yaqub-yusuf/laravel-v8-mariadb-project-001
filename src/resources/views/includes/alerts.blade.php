@@ -1,13 +1,3 @@
-@if ($errors->any())
-  <div class="form-group row alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-@endif
-
 @if (isset($resultAction))
   <div class="form-group row alert alert-danger">
     <ul>

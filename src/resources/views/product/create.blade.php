@@ -32,26 +32,26 @@
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Produto</label>
             <div class="col-sm-10">
-              <input type="text" id="name" name="name" value="" class="form-control" />
-              <span class="text-danger"></span>
+              <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" />
+              @error('name') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descrição</label>
             <div class="col-sm-10">
-              <textarea id="description" name="description" cols="40" rows="5" class="form-control"></textarea>
-              <span class="text-danger"></span>
+              <textarea id="description" name="description" cols="40" rows="5" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+              @error('description') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagem Upload</label>
             <div class="col-sm-10">
               <div class="custom-file">
-                <input type="file" id="ImagemUpload" name="image" class="custom-file-input" />
+                <input type="file" id="ImagemUpload" name="image" class="custom-file-input @error('image') is-invalid @enderror" />
                 <label data-browse="Procurar" style="width: 400px" class="custom-file-label" for="ImagemUpload"></label>
                 <label style="display: none" id="img_nome"></label>
               </div>
-              <span class="text-danger"></span>
+              @error('image') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
           </div>
           <div class="form-group row">
@@ -63,9 +63,9 @@
                     <i class="fas fa-boxes"></i>
                   </span>
                 </div>
-                <input type="text" id="quantity" name="quantity" value="" class="form-control" />
+                <input type="text" id="quantity" name="quantity" value="{{ old('quantity') }}" class="form-control @error('quantity') is-invalid @enderror" />
               </div>
-              <span class="text-danger"></span>
+              @error('quantity') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
           </div>
           <div class="form-group row">
@@ -77,9 +77,9 @@
                     <i class="fas fa-money-bill-wave"></i>
                   </span>
                 </div>
-                <input type="text" id="cost_price" name="cost_price" value="" class="form-control" />
+                <input type="text" id="cost_price" name="cost_price" value="{{ old('cost_price') }}" class="form-control @error('cost_price') is-invalid @enderror" />
               </div>
-              <span class="text-danger"></span>
+              @error('cost_price') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
           </div>
           <div class="form-group row">
@@ -91,9 +91,9 @@
                     <i class="fas fa-money-bill-wave"></i>
                   </span>
                 </div>
-                <input type="text" id="sales_price" name="sales_price" value="" class="form-control" />
+                <input type="text" id="sales_price" name="sales_price" value="{{ old('sales_price') }}" class="form-control @error('sales_price') is-invalid @enderror" />
               </div>
-              <span class="text-danger"></span>
+              @error('sales_price') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
           </div>
           <div class="form-group row">
@@ -122,9 +122,6 @@
       $("#img_nome").text(this.files[0].name);
       $("#img_nome")[0].style.display = 'block';
     });
-
-    $("#ImagemUpload").attr("data-val", "true");
-    $("#ImagemUpload").attr("data-val-required", "Preencha o campo Imagem...");
   </script>  
   <!-- END Scripts Content -->
 @endsection
