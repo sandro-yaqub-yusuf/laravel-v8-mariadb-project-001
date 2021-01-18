@@ -32,4 +32,21 @@ class ProductCreateRequest extends FormRequest
             'sales_price' => 'required|numeric|min:0'
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'Produto',
+            'description' => 'Descrição',
+            'image' => 'Imagem Upload',
+            'quantity' => 'Quantidade',
+            'cost_price' => 'Preço de Custo',
+            'sales_price' => 'Preço de Venda'
+        ];
+    }    
 }
