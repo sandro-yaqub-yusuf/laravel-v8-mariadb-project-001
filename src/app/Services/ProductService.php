@@ -20,9 +20,37 @@ class ProductService
         return $result;
     }
 
+    public function getAllFilterPaginate($filter, $pages)
+    {
+        $result = $this->productRepository->getAllFilterPaginate($filter, $pages);
+
+        return $result;
+    }    
+
+    public function getAllPaginate($pages)
+    {
+        $result = $this->productRepository->getAllPaginate($pages);
+
+        return $result;
+    }
+    
+    public function getById($id)
+    {
+        $result = $this->productRepository->getById($id);
+
+        return $result;
+    }
+
     public function store($data)
     {
         $result = $this->productRepository->save($data);
+
+        return $result;
+    }
+
+    public function update($data, $id)
+    {
+        $result = $this->productRepository->update($data, $id);
 
         return $result;
     }

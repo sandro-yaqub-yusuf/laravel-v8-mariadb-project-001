@@ -15,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/projeto', [HomeController::class, 'project']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/projeto', [HomeController::class, 'project'])->name('project');
 
-Route::resource('produtos', ProductsController::class);
+Route::prefix('produtos')->group(function() {
+    Route::get('', [ProductsController::class, 'index'])->name('product-index');
+    Route::get('/create', [ProductsController::class, 'create'])->name('product-create');
+    Route::post('/store', [ProductsController::class, 'store'])->name('product-store');
+    Route::get('/edit/{id}', [ProductsController::class, 'edit'])->where('id', '[0-9]+')->name('product-edit');
+    Route::put('/update/{id}', [ProductsController::class, 'update'])->where('id', '[0-9]+')->name('product-update');
+    Route::get('/show/{id}', [ProductsController::class, 'show'])->name('product-show');
+});

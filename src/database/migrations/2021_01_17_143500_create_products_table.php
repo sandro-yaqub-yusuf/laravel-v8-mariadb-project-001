@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->decimal('sales_price', 15, 2)->default(0);
             $table->string('status', 1)->default('A');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

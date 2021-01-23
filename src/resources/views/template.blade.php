@@ -22,7 +22,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link" href="{{ url('/projeto') }}">O Projeto</a>
+          <a class="nav-link" href="{{ route('project') }}">O Projeto</a>
         </li>
       </ul>
       <!-- END Left Navbar Links -->
@@ -31,7 +31,7 @@
     <!-- BEGIN Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- BEGIN Brand Logo -->
-      <a class="brand-link" href="{{ url('/') }}">
+      <a class="brand-link" href="{{ route('home') }}">
         <span class="brand-text font-weight-light">Projeto - 001</span>
       </a>
       <!-- END Brand Logo -->
@@ -51,17 +51,17 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/') }}">
+              <a class="nav-link" href="{{ route('home') }}">
                 <i class="nav-icon fas fa-star"></i><p>Home</p>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/projeto') }}">
+              <a class="nav-link" href="{{ route('project') }}">
                 <i class="nav-icon fas fa-code"></i><p>O Projeto</p>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/produtos') }}">
+              <a class="nav-link" href="{{ route('product-index') }}">
                 <i class="nav-icon fas fa-archive"></i><p>Produtos</p>
               </a>
             </li>
@@ -82,7 +82,7 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.5
       </div>
-      <strong>Copyright &copy; 2014-2020 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> - <i>All rights reserved.</i>
+      <strong>Copyright &copy; 2014-2021 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> - <i>All rights reserved.</i>
     </footer>
   </div>
   <!-- END Site Wrapper -->
