@@ -2,32 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaginateRequest;
+use App\Http\Requests\ProductIndexRequest;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
+use DB;
 use Exception;
 
 class ProductsController extends Controller
 {
-    protected $productService;
-
-    public function __construct(ProductService $productService)
+    public function index(PaginateRequest $request, ProductIndexRequest $productIndexRequest, ProductService $productService)
     {
-        $this->productService = $productService;
-    }
+        $filter_name = $request->query('name', null);
+        $data = $productService->all()->paginate(5);
 
-    public function index(Request $request)
-    {
-        $filter = $request->query('filter', null);
-
-        if ($filter) {
-            $data = $this->productService->getAllFilterPaginate($filter, 5);
-        } else {
-            $data = $this->productService->getAllPaginate(5);
-        }
-
-        return view('product.index', ['products' => $data, 'filter' => $filter]);
+        return view('product.index', ['products' => $data, 'name' => $filter_name]);
     }
 
     public function create()
@@ -35,7 +25,7 @@ class ProductsController extends Controller
         return view('product.create');
     }
 
-    public function store(ProductCreateRequest $request)
+    public function store(ProductCreateRequest $request, ProductService $productService)
     {
         $result = [];
 
@@ -55,7 +45,7 @@ class ProductsController extends Controller
 
             $data['filename'] = $filename;
 
-            $this->productService->store($data);
+            $productService->create($data);
 
             $request->file("image")->move(public_path("img/products"), $filename);
 
@@ -73,12 +63,12 @@ class ProductsController extends Controller
         return view('product.create', ['resultAction' => $result]);
     }
 
-    public function edit($id)
+    public function edit($id, ProductService $productService)
     {
         $result = [];
 
         try {
-            $product = $this->productService->getById($id);
+            $product = $productService->getById($id);
 
             if ($product) return view('product.edit', ['product' => $product]);
 
@@ -96,7 +86,7 @@ class ProductsController extends Controller
         return redirect()->route('product-index')->withErrors('Problemas ao carregar os dados do Produto !!!');
     }
 
-    public function update(ProductUpdateRequest $request, $id)
+    public function update(ProductUpdateRequest $request, $id, ProductService $productService)
     {
         $result = [];
 
@@ -120,7 +110,7 @@ class ProductsController extends Controller
 
             $data['filename'] = $filename;
 
-            $this->productService->update($data, $id);
+            $productService->update($data, $id);
 
             if ($filename != '') $request->file("image")->move(public_path("img/products"), $filename);
 
@@ -138,12 +128,12 @@ class ProductsController extends Controller
         return redirect()->route('product-edit', ['id' => $id])->withErrors('O Produto não pode ser alterado !!!');
     }
 
-    public function destroy($id)
+    public function destroy($id, ProductService $productService)
     {
         $result = [];
 
         try {
-            $product = $this->productService->getById($id);
+            $product = $productService->getById($id);
 
             if ($product) return view('product.destroy', ['product' => $product]);
 
@@ -161,12 +151,12 @@ class ProductsController extends Controller
         return redirect()->route('product-index')->withErrors('Problemas ao carregar os dados do Produto !!!');
     }
 
-    public function delete($id)
+    public function delete($id, ProductService $productService)
     {
         $result = [];
 
         try {
-            $this->productService->delete($id);
+            $productService->delete($id);
 
             return redirect()->route('product-index')->withSuccess('Produto excluído com sucesso...');
         }
@@ -182,12 +172,12 @@ class ProductsController extends Controller
         return redirect()->route('product-destroy', ['id' => $id])->withErrors('O Produto não pode ser excluído !!!');
     }
 
-    public function show($id)
+    public function show($id, ProductService $productService)
     {
         $result = [];
 
         try {
-            $product = $this->productService->getById($id);
+            $product = $productService->getById($id);
 
             if ($product) return view('product.show', ['product' => $product]);
 
