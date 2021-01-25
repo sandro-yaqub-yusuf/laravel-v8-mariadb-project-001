@@ -138,12 +138,49 @@ class ProductsController extends Controller
         return redirect()->route('product-edit', ['id' => $id])->withErrors('O Produto não pode ser alterado !!!');
     }
 
-/*
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $result = [];
+
+        try {
+            $product = $this->productService->getById($id);
+
+            if ($product) return view('product.destroy', ['product' => $product]);
+
+            return redirect()->route('product-index')->withErrors('Produto não cadastrado !!!');
+        }
+        catch (Exception $ex) {
+            $message[] = ['ERROR' => $ex->getMessage()];
+
+            $result = [
+                'status' => 'ERRO',
+                'message' => $message
+            ];
+        }
+
+        return redirect()->route('product-index')->withErrors('Problemas ao carregar os dados do Produto !!!');
     }
-*/
+
+    public function delete($id)
+    {
+        $result = [];
+
+        try {
+            $this->productService->delete($id);
+
+            return redirect()->route('product-index')->withSuccess('Produto excluído com sucesso...');
+        }
+        catch (Exception $ex) {
+            $message[] = ['ERROR' => $ex->getMessage()];
+
+            $result = [
+                'status' => 'ERRO',
+                'message' => $message
+            ];
+        }
+
+        return redirect()->route('product-destroy', ['id' => $id])->withErrors('O Produto não pode ser excluído !!!');
+    }
 
     public function show($id)
     {

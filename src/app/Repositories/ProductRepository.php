@@ -75,4 +75,13 @@ class ProductRepository
 
         return $product->fresh();
     }
+
+    public function delete($id)
+    {
+        $product = $this->getById($id);
+
+        $product->delete();
+
+        return $product->fresh();
+    }
 }

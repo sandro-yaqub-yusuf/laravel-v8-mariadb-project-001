@@ -25,7 +25,7 @@
   <!-- BEGIN Content -->
   <section class="content">
     <div class="container-fluid">
-      <form id="product_form" class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ route('product-update', ['id' => $product->id]) }}">
+      <form id="product_form" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('product-update', ['id' => $product->id]) }}">
         @csrf
         @method('PUT')
         <div class="card-body">

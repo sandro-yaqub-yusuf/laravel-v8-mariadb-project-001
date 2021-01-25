@@ -54,4 +54,11 @@ class ProductService
 
         return $result;
     }
+
+    public function delete($id)
+    {
+        $result = $this->productRepository->delete($id);
+
+        return $result;
+    }
 }

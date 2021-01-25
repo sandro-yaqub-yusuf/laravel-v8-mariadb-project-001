@@ -24,5 +24,7 @@ Route::prefix('produtos')->group(function() {
     Route::post('/store', [ProductsController::class, 'store'])->name('product-store');
     Route::get('/edit/{id}', [ProductsController::class, 'edit'])->where('id', '[0-9]+')->name('product-edit');
     Route::put('/update/{id}', [ProductsController::class, 'update'])->where('id', '[0-9]+')->name('product-update');
-    Route::get('/show/{id}', [ProductsController::class, 'show'])->name('product-show');
+    Route::get('/show/{id}', [ProductsController::class, 'show'])->where('id', '[0-9]+')->name('product-show');
+    Route::get('/destroy/{id}', [ProductsController::class, 'destroy'])->where('id', '[0-9]+')->name('product-destroy');
+    Route::delete('/delete/{id}', [ProductsController::class, 'delete'])->where('id', '[0-9]+')->name('product-delete');
 });

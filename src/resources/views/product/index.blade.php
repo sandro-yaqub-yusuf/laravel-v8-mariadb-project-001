@@ -32,7 +32,7 @@
           <p><a class="btn btn-info" href="{{ route('product-create') }}">Novo Produto</a></p>
         </div>
         <div class="col-md-12" style="margin-top: 10px;">
-          <form class="form-horizontal" method="get" action="{{ route('product-index') }}">
+          <form class="form-horizontal" method="GET" action="{{ route('product-index') }}">
             <div class="form-group row">
               <div class="col-sm-1" style="margin-bottom: 10px;">
                 <label for="Produto" class="col-form-label">Produto:</label>
@@ -74,7 +74,7 @@
                   <td class="text-right">
                     <a class="btn btn-warning" href="{{ route('product-show', ['id' => $product->id]) }}"><span class="fa fa-search"></span></a>
                     <a class="btn btn-info" href="{{ route('product-edit', ['id' => $product->id]) }}"><span class="fa fa-pencil-alt"></span></a>
-                    <a class="btn btn-danger" href="#"><span class="fa fa-trash"></span></a>
+                    <a class="btn btn-danger" href="{{ route('product-destroy', ['id' => $product->id]) }}"><span class="fa fa-trash"></span></a>
                   </td>
                 </tr>
               @endforeach
