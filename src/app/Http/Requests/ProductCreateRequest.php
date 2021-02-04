@@ -26,7 +26,7 @@ class ProductCreateRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:255',
             'description' => 'required|string|min:2',
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
+            'image_upload' => 'required|image|mimes:jpeg,jpg,png|max:1024',
             'quantity' => 'required|numeric|min:0',
             'cost_price' => 'required|numeric|min:0',
             'sales_price' => 'required|numeric|min:0'

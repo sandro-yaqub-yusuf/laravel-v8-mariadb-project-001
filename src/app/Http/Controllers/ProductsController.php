@@ -33,21 +33,21 @@ class ProductsController extends Controller
             $data = $request->only([
                 'name',
                 'description',
-                'image',
+                'image_upload',
                 'quantity',
                 'cost_price',
                 'sales_price',
                 'status'
             ]);
             
-            $extension = $request->file("image")->extension();
+            $extension = $request->file("image_upload")->extension();
             $filename = time().".".$extension;
 
-            $data['filename'] = $filename;
+            $data['image'] = $filename;
 
             $productService->create($data);
 
-            $request->file("image")->move(public_path("img/products"), $filename);
+            $request->file("image_upload")->move(public_path("img/products"), $filename);
 
             return redirect()->route('product-index')->withSuccess('Produto cadastrado com sucesso');
         } 
@@ -94,25 +94,25 @@ class ProductsController extends Controller
             $data = $request->only([
                 'name',
                 'description',
-                'image',
+                'image_upload',
                 'quantity',
                 'cost_price',
                 'sales_price',
                 'status'
             ]);
 
-            if ($request->file("image")) {
-                $extension = $request->file("image")->extension();
+            if ($request->file("image_upload")) {
+                $extension = $request->file("image_upload")->extension();
                 $filename = time().".".$extension;
             } else {
                 $filename = '';                
             }
 
-            $data['filename'] = $filename;
+            $data['image'] = $filename;
 
             $productService->update($data, $id);
 
-            if ($filename != '') $request->file("image")->move(public_path("img/products"), $filename);
+            if ($filename != '') $request->file("image_upload")->move(public_path("img/products"), $filename);
 
             return redirect()->route('product-index')->withSuccess('Produto alterado com sucesso...');
         }

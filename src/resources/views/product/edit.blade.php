@@ -46,9 +46,9 @@
             <label class="col-sm-2 col-form-label">Imagem Upload</label>
             <div class="col-sm-10">
               <div class="custom-file">
-                <input type="file" id="ImagemUpload" name="image" class="custom-file-input" style="flex: 0 0 50%;" />
-                <label data-browse="Procurar" style="width: 500px" class="custom-file-label" for="ImagemUpload"></label>
-                <label style="display: block" id="img_nome"></label>
+                <input type="file" id="image_upload" name="image_upload" class="custom-file-input" style="flex: 0 0 50%;" />
+                <label data-browse="Procurar" style="width: 500px" class="custom-file-label"></label>
+                <label style="display: block" id="img_name"></label>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@
           rules: {
             name: { required: true, minlength: 2, maxlength: 255 },
             description: { required: true, minlength: 2 },
-            image: { required: false, minlength: 4, maxlength: 255 },
+            image_upload: { required: false, minlength: 4, maxlength: 255 },
             quantity: { required: true, min: 0 },
             cost_price: { required: true, min: 0 },
             sales_price: { required: true, min: 0 }
@@ -129,10 +129,10 @@
         });
       }
       
-      $("#img_nome").text('{{ $product->image }}');
+      $("#img_name").text('{{ $product->image }}');
 
-      $("#ImagemUpload").change(function () {
-        $("#img_nome").text(this.files[0].name);
+      $("#image_upload").change(function () {
+        $("#img_name").text(this.files[0].name);
       });
     });
   </script>  
