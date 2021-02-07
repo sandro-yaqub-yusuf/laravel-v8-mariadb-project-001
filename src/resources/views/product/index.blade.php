@@ -70,15 +70,15 @@
               @foreach ($products as $product)
                 <tr>
                   <td width="10%">{{ $product->id }}</td>
-                  <td width="40%">{{ $product->name }}</td>
+                  <td width="42%">{{ $product->name }}</td>
                   <td width="10%">{{ $product->quantity }}</td>
                   <td width="10%">{{ $maskHelper->currency('R$', $product->cost_price) }}</td>
                   <td width="10%">{{ $maskHelper->currency('R$', $product->sales_price) }}</td>
                   <td width="10%">{!! $maskHelper->status($product->status) !!}</td>
-                  <td class="text-right" width="10%">
-                    <a class="btn btn-warning" href="{{ route('product-show', ['id' => $product->id]) }}"><span class="fa fa-search"></span></a>
-                    <a class="btn btn-info" href="{{ route('product-edit', ['id' => $product->id]) }}"><span class="fa fa-pencil-alt"></span></a>
-                    <a class="btn btn-danger" href="{{ route('product-destroy', ['id' => $product->id]) }}"><span class="fa fa-trash"></span></a>
+                  <td class="text-right" width="8%">
+                    <a class="btn-sm btn-warning" href="{{ route('product-show', ['id' => $product->id]) }}"><span class="fa fa-search"></span></a>
+                    <a class="btn-sm btn-info" href="{{ route('product-edit', ['id' => $product->id]) }}"><span class="fa fa-pencil-alt"></span></a>
+                    <a class="btn-sm btn-danger" href="{{ route('product-destroy', ['id' => $product->id]) }}"><span class="fa fa-trash"></span></a>
                   </td>
                 </tr>
               @endforeach
