@@ -30,6 +30,8 @@ class ProductIndexRequest extends PaginateRequest
         $rules = [
             'order_column'    => 'nullable|string|in:id,name',
             'order_direction' => 'nullable|order_direction',
+            'per_page'        => 'nullable|integer',
+            'page'            => 'nullable|integer',
             'name'            => 'nullable|string'
         ];
         

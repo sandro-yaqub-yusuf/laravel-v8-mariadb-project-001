@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <a class="btn btn-info float-left" href="{{ route('product-index') }}">Voltar</a>
+        <a class="btn btn-info float-left" href="{{ route('product-index', ['page' => $product->current_page]) }}">Voltar</a>
       </div>
     </div>
   </section>

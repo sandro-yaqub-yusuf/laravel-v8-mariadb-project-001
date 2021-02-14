@@ -58,6 +58,12 @@ class ProductService extends AbstractService
         DB::beginTransaction();
 
         try {
+            if ($data['image'] == '') {
+                $product = $this->repository->find($id);
+
+                $data['image'] = $product->image;
+            }
+
             $result = $this->repository->update($data, $id);
         }
         catch (Exception $e) {

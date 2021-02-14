@@ -25,7 +25,7 @@
   <!-- BEGIN Content -->
   <section class="content">
     <div class="container-fluid">
-      <form id="product_form" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('product-update', ['id' => $product->id]) }}">
+      <form id="product_form" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('product-update', ['id' => $product->id, 'page' => $product->current_page]) }}">
         @csrf
         @method('PUT')
         <div class="card-body">
@@ -103,7 +103,7 @@
         </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Alterar</button>
-          <a class="btn btn-info float-right" href="{{ route('product-index') }}">Voltar</a>
+          <a class="btn btn-info float-right" href="{{ route('product-index', ['page' => $product->current_page]) }}">Voltar</a>
         </div>
       </form>
     </div>

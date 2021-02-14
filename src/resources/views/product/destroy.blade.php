@@ -25,7 +25,7 @@
   <!-- BEGIN Content -->
   <section class="content">
     <div class="container-fluid">
-      <form id="product_form" class="form-horizontal" method="POST" action="{{ route('product-delete', ['id' => $product->id]) }}">
+      <form id="product_form" class="form-horizontal" method="POST" action="{{ route('product-delete', ['id' => $product->id, 'page' => $product->current_page]) }}">
         @csrf
         @method('DELETE')
         <div class="card-body">
@@ -99,7 +99,7 @@
         </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-danger">Excluir</button>
-          <a class="btn btn-info float-right" href="{{ route('product-index') }}">Voltar</a>
+          <a class="btn btn-info float-right" href="{{ route('product-index', ['page' => $product->current_page]) }}">Voltar</a>
         </div>
       </form>
     </div>

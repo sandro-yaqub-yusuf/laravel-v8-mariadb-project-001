@@ -76,9 +76,9 @@
                   <td width="10%">{{ $maskHelper->currency('R$', $product->sales_price) }}</td>
                   <td width="10%">{!! $maskHelper->status($product->status) !!}</td>
                   <td class="text-right" width="8%">
-                    <a class="btn-sm btn-warning" href="{{ route('product-show', ['id' => $product->id]) }}"><span class="fa fa-search"></span></a>
-                    <a class="btn-sm btn-info" href="{{ route('product-edit', ['id' => $product->id]) }}"><span class="fa fa-pencil-alt"></span></a>
-                    <a class="btn-sm btn-danger" href="{{ route('product-destroy', ['id' => $product->id]) }}"><span class="fa fa-trash"></span></a>
+                    <a class="btn-sm btn-warning" href="{{ route('product-show', ['id' => $product->id, 'page' => $products->currentPage() ]) }}"><span class="fa fa-search"></span></a>
+                    <a class="btn-sm btn-info" href="{{ route('product-edit', ['id' => $product->id, 'page' => $products->currentPage() ]) }}"><span class="fa fa-pencil-alt"></span></a>
+                    <a class="btn-sm btn-danger" href="{{ route('product-destroy', ['id' => $product->id, 'page' => $products->currentPage() ]) }}"><span class="fa fa-trash"></span></a>
                   </td>
                 </tr>
               @endforeach
@@ -88,7 +88,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          {{ $products->links() }}
+          {{ $products->onEachSide(5)->links() }}
         </div>
       </div>
     </div>
