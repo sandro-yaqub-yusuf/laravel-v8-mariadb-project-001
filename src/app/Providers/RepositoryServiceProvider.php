@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\AuthRepository;
 use App\Repositories\Interfaces\ProductRepository;
+use App\Repositories\AuthRepositoryEloquent;
 use App\Repositories\ProductRepositoryEloquent;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(AuthRepository::class, AuthRepositoryEloquent::class);
         $this->app->bind(ProductRepository::class, ProductRepositoryEloquent::class);
     }
 }

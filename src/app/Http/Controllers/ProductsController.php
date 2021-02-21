@@ -6,26 +6,33 @@ use App\Http\Requests\PaginateRequest;
 use App\Http\Requests\ProductIndexRequest;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Services\AuthService;
 use App\Services\ProductService;
 use Exception;
 
 class ProductsController extends Controller
 {
-    public function index(ProductIndexRequest $productIndexRequest, ProductService $productService)
+    public function index(ProductIndexRequest $productIndexRequest, AuthService $authService, ProductService $productService)
     {
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
         $filter_name = $productIndexRequest->query('name', null);
         $products = $productService->all()->paginate(5);
 
-        return view('product.index', ['products' => $products, 'name' => $filter_name]);
+        return view('product.index', ['loggedUser' => $loggedUser, 'products' => $products, 'name' => $filter_name]);
     }
 
-    public function create()
+    public function create(AuthService $authService)
     {
-        return view('product.create');
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
+        return view('product.create', ['loggedUser' => $loggedUser]);
     }
 
     public function store(ProductCreateRequest $request, ProductService $productService)
     {
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
         $result = [];
 
         try {
@@ -62,15 +69,17 @@ class ProductsController extends Controller
         return view('product.create', ['resultAction' => $result]);
     }
 
-    public function edit($id, ProductIndexRequest $productIndexRequest, ProductService $productService)
+    public function edit($id, ProductIndexRequest $productIndexRequest, AuthService $authService, ProductService $productService)
     {
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
         $result = [];
 
         try {
             $product = $productService->getById($id);
             $product['current_page'] = $productIndexRequest->query('page', 1);
 
-            if ($product) return view('product.edit', ['product' => $product]);
+            if ($product) return view('product.edit', ['loggedUser' => $loggedUser, 'product' => $product]);
 
             return redirect()->route('product-index')->withErrors('Produto não cadastrado !!!');
         }
@@ -130,15 +139,17 @@ class ProductsController extends Controller
         return redirect()->route('product-edit', ['id' => $id])->withErrors('O Produto não pode ser alterado !!!');
     }
 
-    public function destroy($id, ProductIndexRequest $productIndexRequest, ProductService $productService)
+    public function destroy($id, ProductIndexRequest $productIndexRequest, AuthService $authService, ProductService $productService)
     {
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
         $result = [];
 
         try {
             $product = $productService->getById($id);
             $product['current_page'] = $productIndexRequest->query('page', 1);
 
-            if ($product) return view('product.destroy', ['product' => $product]);
+            if ($product) return view('product.destroy', ['loggedUser' => $loggedUser, 'product' => $product]);
 
             return redirect()->route('product-index')->withErrors('Produto não cadastrado !!!');
         }
@@ -177,15 +188,17 @@ class ProductsController extends Controller
         return redirect()->route('product-destroy', ['id' => $id])->withErrors('O Produto não pode ser excluído !!!');
     }
 
-    public function show($id, ProductIndexRequest $productIndexRequest, ProductService $productService)
+    public function show($id, ProductIndexRequest $productIndexRequest, AuthService $authService, ProductService $productService)
     {
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
         $result = [];
 
         try {
             $product = $productService->getById($id);
             $product['current_page'] = $productIndexRequest->query('page', 1);
 
-            if ($product) return view('product.show', ['product' => $product]);
+            if ($product) return view('product.show', ['loggedUser' => $loggedUser, 'product' => $product]);
 
             return redirect()->route('product-index')->withErrors('Produto não cadastrado !!!');
         }

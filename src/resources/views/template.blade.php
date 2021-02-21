@@ -32,7 +32,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- BEGIN Brand Logo -->
       <a class="brand-link" href="{{ route('home') }}">
-        <span class="brand-text font-weight-light">Projeto - 001</span>
+        <span class="brand-text font-weight-light">Laravel v8.x - Projeto 001</span>
       </a>
       <!-- END Brand Logo -->
       <!-- BEGIN Sidebar -->
@@ -43,7 +43,7 @@
             <img src="{{ url('img/users/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="Imagem do Usuário">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Usuário Anônimo</a>
+            <a href="#" class="d-block">{{ $loggedUser->name }}</a>
           </div>
         </div>
         <!-- END Sidebar user (optional) -->
@@ -63,6 +63,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('product-index') }}">
                 <i class="nav-icon fas fa-archive"></i><p>Produtos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('auth-logout') }}">
+                <i class="nav-icon fas fa-door-closed"></i><p>Sair</p>
               </a>
             </li>
           </ul>
@@ -87,7 +92,7 @@
   </div>
   <!-- END Site Wrapper -->
   <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('lib/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('js/adminlte.min.js') }}"></script>
   <script src="{{ asset('js/site.js') }}"></script>
 </body>

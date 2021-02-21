@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Laravel v8.x - Novo Produto')
+@section('title', 'LARAVEL v8.x - Projeto 001 - Exclusão do Produto')
     
 @section('content')
   <!-- BEGIN Content Header -->

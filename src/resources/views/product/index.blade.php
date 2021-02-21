@@ -2,7 +2,7 @@
 
 @extends('template')
 
-@section('title', 'Laravel v8.x - Produtos')
+@section('title', 'LARAVEL v8.x - Projeto 001 - Produtos')
     
 @section('content')
   <!-- BEGIN Content Header -->

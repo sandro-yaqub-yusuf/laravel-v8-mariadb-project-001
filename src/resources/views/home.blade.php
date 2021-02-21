@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['loggedUser' => $loggedUser])
 
 @section('title', 'Laravel v8.x - Home')
     

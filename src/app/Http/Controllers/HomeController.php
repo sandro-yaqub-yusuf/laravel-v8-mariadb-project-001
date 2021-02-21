@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AuthService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() 
+    public function index(AuthService $authService) 
     {
-        return view('home');
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
+        return view('home', ['loggedUser' => $loggedUser]);
     }
 
-    public function project() 
+    public function project(AuthService $authService) 
     {
-        return view('project');
+        $loggedUser = $authService->getById(session('LoggedUser'));
+
+        return view('project', ['loggedUser' => $loggedUser]);
     }
 }
