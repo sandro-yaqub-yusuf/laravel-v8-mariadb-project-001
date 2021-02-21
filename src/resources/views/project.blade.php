@@ -1,6 +1,6 @@
-@extends('template', ['loggedUser' => $loggedUser])
+@extends('template')
 
-@section('title', 'Laravel v8.x - O Projeto')
+@section('title', 'Laravel v8.x - Projeto 001 - O Projeto')
     
 @section('content')
   <!-- BEGIN Content -->

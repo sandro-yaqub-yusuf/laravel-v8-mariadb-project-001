@@ -100,6 +100,6 @@ class AuthService extends AbstractService
             if (Hash::check($data['password'], $user->password)) return $user;
         }
 
-        return null;
+        throw new Exception('Usuário ou Senha incorretos.');
     }
 }

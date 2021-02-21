@@ -9,15 +9,11 @@ class HomeController extends Controller
 {
     public function index(AuthService $authService) 
     {
-        $loggedUser = $authService->getById(session('LoggedUser'));
-
-        return view('home', ['loggedUser' => $loggedUser]);
+        return view('home');
     }
 
     public function project(AuthService $authService) 
     {
-        $loggedUser = $authService->getById(session('LoggedUser'));
-
-        return view('project', ['loggedUser' => $loggedUser]);
+        return view('project');
     }
 }

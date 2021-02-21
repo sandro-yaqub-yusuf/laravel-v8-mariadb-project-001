@@ -22,7 +22,7 @@
         <form id="product_form" class="form-horizontal" method="POST" action="{{ route('auth-registerCheck') }}">
           @csrf
           <div class="input-group mb-3">
-            <input type="text" name="name" class="form-control" placeholder="Digite o seu Nome completo...">
+            <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Digite o seu Nome completo...">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control" placeholder="Digite o seu Email...">
+            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Digite o seu Email...">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>

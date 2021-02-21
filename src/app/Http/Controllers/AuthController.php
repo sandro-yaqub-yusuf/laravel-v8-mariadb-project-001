@@ -35,9 +35,7 @@ class AuthController extends Controller
 
             $userInfo = $authService->getLogin($data);
 
-            if (!$userInfo) return back()->with('fail', 'Usuário ou Senha incorretos.');
-
-            $request->session()->put('LoggedUser', $userInfo->id);
+            $request->session()->put('LoggedUser', ['user_id' => $userInfo->id, 'user_name' => $userInfo->name]);
 
             return redirect()->route('home');
         } 

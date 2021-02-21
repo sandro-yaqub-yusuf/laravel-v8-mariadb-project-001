@@ -94,7 +94,7 @@ return [
     'not_in' => 'O item selecionado do campo :attribute é inválido !!!',
     'not_regex' => 'O campo :attribute está no formato inválido !!!',
     'numeric' => 'O campo :attribute deve ser númerico !!!',
-    'password' => 'The password is incorrect.',
+    'password' => 'A Senha está incorreta.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'O campo :attribute está no formato inválido !!!',
     'required' => 'O campo :attribute é obrigatório !!!',
@@ -104,7 +104,7 @@ return [
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
-    'same' => 'The :attribute and :other must match.',
+    'same' => 'O campo :attribute e o campo :other precisam ser iguais.',
     'size' => [
         'numeric' => 'O campo :attribute deve conter :size digito !!!',
         'file' => 'O campo :attribute deve conter um arquivo de :size KB !!!',

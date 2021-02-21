@@ -43,7 +43,7 @@
             <img src="{{ url('img/users/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="Imagem do Usuário">
           </div>
           <div class="info">
-            <a href="#" class="d-block">{{ $loggedUser->name }}</a>
+            <a href="#" class="d-block">{{ session('LoggedUser')['user_name'] }}</a>
           </div>
         </div>
         <!-- END Sidebar user (optional) -->
